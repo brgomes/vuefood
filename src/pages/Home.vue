@@ -17,9 +17,11 @@
                         </a>
                         <div class="restaurant-card-body">
                             <h3>
-                                <router-link :to="{name: 'products'}">
+                                <!--<router-link :to="{name: 'products', params: {companyFlag: company.flag}}">-->
+                                <a href="#" @click.prevent="goStoreCompany(company)">
                                     {{ company.name }}
-                                </router-link>
+                                </a>
+                                <!--</router-link>-->
                             </h3>
                         </div>
                     </div>
@@ -31,7 +33,7 @@
 
 <script>
 import companies from '@/store/modules/companies'
-import { mapActions, mapState } from 'vuex'
+import { mapActions, mapState, mapMutations } from 'vuex'
 
 export default {
     mounted() {
@@ -53,7 +55,16 @@ export default {
     methods: {
         ...mapActions([
             'getCompanies'
-        ])
+        ]),
+
+        ...mapMutations({
+            setCompany: 'SET_SELECTED_COMPANY',
+        }),
+
+        goStoreCompany(company) {
+            this.setCompany(company)
+            this.$router.push({ name: 'products', params: { companyFlag: company.flag }})
+        }
     }
 }
 </script>

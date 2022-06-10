@@ -10,8 +10,27 @@ const actions = {
 
         return axios.get(`${API_VERSION}/${RESOURCE}`)
             .then(response => {
-                commit('SET_COMPANY', response.data)
+                commit('SET_COMPANIES', response.data)
             })
+            .finally(() => commit('SET_PRELOADER', false))
+    },
+
+    getCategoriesByCompany ({ commit }, token_company) {
+        commit('SET_PRELOADER', true)
+        commit('SET_TEXT_PRELOADER', 'Carregando categorias...')
+
+        return axios.get(`${API_VERSION}/categories`, { params: { token_company } })
+            .then(response => commit('SET_CATEGORIES_COMPANY', response.data))
+            .finally(() => commit('SET_PRELOADER', false))
+    },
+
+    getProductsByCompany ({ commit }, params) {
+        commit('SET_PRELOADER', true)
+        commit('SET_PRODUCTS_COMPANY', { data: [] })
+        commit('SET_TEXT_PRELOADER', 'Carregando produtos...')
+
+        return axios.get(`${API_VERSION}/products`, { params } )
+            .then(response => commit('SET_PRODUCTS_COMPANY', response.data))
             .finally(() => commit('SET_PRELOADER', false))
     }
 }
