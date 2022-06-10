@@ -1,5 +1,6 @@
 <template>
     <div>
+        <preloader-component></preloader-component>
         <header-component/>
 
         <div class="container container-body">
@@ -15,12 +16,14 @@ import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import HeaderComponent from './_partials/header'
 import FooterComponent from './_partials/footer'
+import Preloader from '@/components/Preloader.vue'
 
 export default {
     components: {
-        HeaderComponent,
-        FooterComponent
-    }
+    HeaderComponent,
+    FooterComponent,
+    Preloader
+}
 }
 </script>
 
