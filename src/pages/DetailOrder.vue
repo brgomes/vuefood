@@ -84,7 +84,7 @@
                 />
 
                 <div class="form-group">
-                    <textarea v-model="evaluation.comment" class="form-control" name="comment" cols="30" rows="3" placeholder="Comentário (Opicional)"></textarea>
+                    <textarea v-model="evaluation.comment" class="form-control" name="comment" cols="30" rows="3" placeholder="Comentário (Opcional)"></textarea>
                 </div>
                 <button
                     class="btn btn-info"

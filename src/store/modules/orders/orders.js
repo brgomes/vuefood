@@ -47,7 +47,7 @@ const actions = {
         const token = localStorage.getItem(TOKEN_NAME)
         if (!token) Promise.reject()
 
-        return axios.post(`auth/${API_VERSION}/orders/${params.identify}/evaluations`, params, {
+        return axios.post(`${API_VERSION}/auth/orders/${params.identify}/evaluations`, params, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
