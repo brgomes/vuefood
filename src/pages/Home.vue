@@ -32,11 +32,19 @@
 </template>
 
 <script>
-import companies from '@/store/modules/companies'
 import { mapActions, mapState, mapMutations } from 'vuex'
 
 export default {
     mounted() {
+        if (this.company.name) {
+            return this.$router.push({
+                name: 'products',
+                params: {
+                    companyFlag: this.company.flag
+                }
+            })
+        }
+
         this.getCompanies()
             .catch(response => {
                 this.$vToastify.error('Falha ao carregar empresas', 'Erro')
@@ -46,9 +54,10 @@ export default {
     computed: {
         /*companies () {
             return this.$store.state.companies.items
-        }*/
+        },*/
         ...mapState({
-            companies: state => state.companies.items
+            companies: state => state.companies.items,
+            company: state => state.companies.selectedCompany,
         })
     },
 

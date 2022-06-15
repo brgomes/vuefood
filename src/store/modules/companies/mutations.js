@@ -1,4 +1,4 @@
-const mutations = {
+export default {
     SET_COMPANIES (state, companies) {
         state.items = companies
     },
@@ -7,26 +7,41 @@ const mutations = {
         state.selectedCompany = Object.assign(state.selectedCompany, company)
     },
 
+    REMOVE_COMPANY_SELECTED (state) {
+        state.selectedCompany = {
+            name: '',
+            products: {
+                data: []
+            },
+            table: {
+                identify: '',
+                description: '',
+                name: ''
+            }
+        },
+    
+        state.categoriesSelectedCompany = {
+            data: []
+        }
+    },
+
     SET_CATEGORIES_COMPANY (state, categories) {
         state.categoriesSelectedCompany = categories
     },
 
     SET_PRODUCTS_COMPANY (state, products) {
-        //console.log(products.data)
         state.selectedCompany.products = products
     },
 
     SET_TABLE_COMPANY (state, table) {
-        state.companySelected.table = table
+        state.selectedCompany.table = table
     },
 
     REMOVE_TABLE_COMPANY (state, table) {
-        state.companySelected.table = {
+        state.selectedCompany.table = {
             identify: '',
             description: '',
             name: ''
         }
     },
 }
-
-export default mutations
