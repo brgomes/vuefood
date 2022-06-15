@@ -15,6 +15,18 @@ const mutations = {
         //console.log(products.data)
         state.selectedCompany.products = products
     },
+
+    SET_TABLE_COMPANY (state, table) {
+        state.companySelected.table = table
+    },
+
+    REMOVE_TABLE_COMPANY (state, table) {
+        state.companySelected.table = {
+            identify: '',
+            description: '',
+            name: ''
+        }
+    },
 }
 
 export default mutations

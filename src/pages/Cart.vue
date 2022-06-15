@@ -52,7 +52,7 @@
 
 <script>
 import { mapState, mapMutations } from 'vuex'
-//import Checkout from './_partials/Checkout'
+import Checkout from './_partials/Checkout'
 
 export default {
     computed: {
@@ -78,7 +78,7 @@ export default {
         }),
     },
     components: {
-        //Checkout
+        Checkout
     }
 }
 </script>

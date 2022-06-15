@@ -57,12 +57,12 @@ const actions = {
     createOrder ({commit}, params) {
         return new Promise((resolve, reject) => {
             axios.post(`${API_VERSION}/orders`, params)
-                        .then(response => {
-                            commit('CLEAR_CART')
+                .then(response => {
+                    commit('CLEAR_CART')
 
-                            resolve(response.data.data)
-                        })
-                        .catch(response => reject(response.error))
+                    resolve(response.data.data)
+                })
+                .catch(response => reject(response.error))
         })
     },
 
